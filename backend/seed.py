@@ -8,65 +8,17 @@ def seed_db(clear=True):
         Base.metadata.drop_all(bind=engine)
     Base.metadata.create_all(bind=engine)
 
-
     db: Session = SessionLocal()
     try:
-        # Mock product list
+        # Mock product list - 20 items of Organic Food, Vegetables, Fruits, Sweets, and Snacks
         products = [
-            models.Product(
-                name="Bharath Wireless ANC Headphones",
-                description="Experience pristine, high-fidelity sound. Designed with active noise cancellation, custom audio tuning, and premium leather earcups for maximum comfort during long listening sessions.",
-                price=24999.00,
-                image_url="/assets/wireless_headphones.jpg",
-                category="Audio",
-                stock=25
-            ),
-            models.Product(
-                name="Horizon Smartwatch Pro",
-                description="A futuristic wearable with a titanium case, vibrant always-on AMOLED display, heart rate and oxygen monitoring, and up to 7 days of battery life.",
-                price=28999.00,
-                image_url="/assets/smart_watch.jpg",
-                category="Wearables",
-                stock=15
-            ),
-            models.Product(
-                name="Nomad Mechanical Keyboard",
-                description="Compact 65% mechanical keyboard with tactile hot-swappable switches, premium PBT keycaps, and customizable subtle RGB backlighting for an aesthetic typing experience.",
-                price=12999.00,
-                image_url="/assets/mechanical_keyboard.jpg",
-                category="Accessories",
-                stock=40
-            ),
-            models.Product(
-                name="Vanguard Leather Backpack",
-                description="Handcrafted from full-grain premium leather. Features a dedicated padded 16-inch laptop sleeve, hidden security pockets, and weather-resistant zippers.",
-                price=14999.00,
-                image_url="/assets/leather_backpack.jpg",
-                category="Lifestyle",
-                stock=10
-            ),
-            models.Product(
-                name="Element Wool Felt Desk Pad",
-                description="Add warmth and tactile comfort to your workspace. Made from premium sustainable wool felt with a non-slip natural rubber backing.",
-                price=3999.00,
-                image_url="/assets/desk_pad.jpg",
-                category="Accessories",
-                stock=50
-            ),
-            models.Product(
-                name="Amber & Oak Scented Candle",
-                description="Hand-poured natural soy wax candle in a textured minimalist ceramic vessel. Emits notes of amber, oakmoss, and warm vanilla to set a relaxing vibe.",
-                price=2499.00,
-                image_url="/assets/scented_candle.jpg",
-                category="Lifestyle",
-                stock=30
-            ),
+            # Groceries / Organic Food (6 items)
             models.Product(
                 name="Bharath Organic Wild Honey",
                 description="100% pure, raw, and organic forest honey collected from naturally occurring beehives. Rich in antioxidants and minerals.",
                 price=799.00,
                 image_url="/assets/organic_honey.jpg",
-                category="Food",
+                category="Organic Food",
                 stock=50
             ),
             models.Product(
@@ -74,30 +26,166 @@ def seed_db(clear=True):
                 description="Premium blend of fresh chicory and Arabica beans, roasted to perfection to deliver the authentic, rich aroma of South Indian filter coffee.",
                 price=449.00,
                 image_url="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=600&auto=format&fit=crop",
-                category="Food",
+                category="Organic Food",
                 stock=60
             ),
             models.Product(
-                name="ZenBook Ultra-Slim Laptop",
-                description="14-inch thin and light laptop featuring an Intel Core i7 processor, 16GB RAM, 512GB SSD, and a stunning 2K OLED display. Ideal for productivity on the go.",
-                price=84999.00,
-                image_url="https://images.unsplash.com/photo-1496181130204-755241524eab?q=80&w=600&auto=format&fit=crop",
-                category="Laptops",
-                stock=12
+                name="Premium Basmati Rice (5kg)",
+                description="Long-grain, aromatic aged basmati rice grown organically in the foothills of the Himalayas. Perfect for biryanis and everyday meals.",
+                price=699.00,
+                image_url="https://images.unsplash.com/photo-1586201375761-83865001e31c?q=80&w=600&auto=format&fit=crop",
+                category="Organic Food",
+                stock=25
             ),
             models.Product(
-                name="Horizon ROG Gaming Laptop",
-                description="Ultimate gaming beast powered by NVIDIA RTX 4060, AMD Ryzen 7, 16GB RAM, and a 144Hz high-refresh display. Dominate every game with advanced cooling technology.",
-                price=119999.00,
-                image_url="https://images.unsplash.com/photo-1603302576837-37561b2e2302?q=80&w=600&auto=format&fit=crop",
-                category="Laptops",
-                stock=8
+                name="Cold-Pressed Mustard Oil (1L)",
+                description="Pure, unrefined mustard oil extracted using the traditional cold-pressing method to preserve its sharp aroma and nutrients.",
+                price=349.00,
+                image_url="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?q=80&w=600&auto=format&fit=crop",
+                category="Organic Food",
+                stock=30
+            ),
+            models.Product(
+                name="Organic Turmeric Powder (250g)",
+                description="High-curcumin turmeric powder sourced from organic farms in Salem. Ground to perfection with no added colors or preservatives.",
+                price=189.00,
+                image_url="https://images.unsplash.com/photo-1615485290382-441e4d049cb5?q=80&w=600&auto=format&fit=crop",
+                category="Organic Food",
+                stock=45
+            ),
+            models.Product(
+                name="A2 Gir Cow Ghee (500ml)",
+                description="Traditional Bilona method ghee prepared from the A2 milk of free-grazing Indian Gir cows. Highly nutritious and aromatic.",
+                price=999.00,
+                image_url="https://images.unsplash.com/photo-1622484211148-716d48e65306?q=80&w=600&auto=format&fit=crop",
+                category="Organic Food",
+                stock=15
+            ),
+
+            # Vegetables (5 items)
+            models.Product(
+                name="Organic Fresh Potatoes (1kg)",
+                description="Earthy, farm-fresh potatoes grown without synthetic pesticides. Perfect for roasting, boiling, and curry recipes.",
+                price=79.00,
+                image_url="https://images.unsplash.com/photo-1518977676601-b53f82aba655?q=80&w=600&auto=format&fit=crop",
+                category="Vegetables",
+                stock=80
+            ),
+            models.Product(
+                name="Organic Red Onions (1kg)",
+                description="Crisp, pungent red onions harvested from local organic farms. Essential for salads, curries, and base gravies.",
+                price=69.00,
+                image_url="https://images.unsplash.com/photo-1508747703725-719777637510?q=80&w=600&auto=format&fit=crop",
+                category="Vegetables",
+                stock=75
+            ),
+            models.Product(
+                name="Vine-Ripened Tomatoes (1kg)",
+                description="Juicy, plump red tomatoes picked fresh from the vine. Sweet and tangy, ideal for fresh pasta sauces and salads.",
+                price=89.00,
+                image_url="https://images.unsplash.com/photo-1595855759920-86582396756a?q=80&w=600&auto=format&fit=crop",
+                category="Vegetables",
+                stock=50
+            ),
+            models.Product(
+                name="Farm-Fresh Spinach (Bunch)",
+                description="Vibrant green, tender spinach leaves packed with iron and vitamins. Freshly cut and washed, ready for cooking.",
+                price=39.00,
+                image_url="https://images.unsplash.com/photo-1576045057995-568f588f82fb?q=80&w=600&auto=format&fit=crop",
+                category="Vegetables",
+                stock=30
+            ),
+            models.Product(
+                name="Organic Carrots (500g)",
+                description="Sweet, crunchy orange carrots rich in beta-carotene. Grown locally and freshly harvested.",
+                price=59.00,
+                image_url="https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?q=80&w=600&auto=format&fit=crop",
+                category="Vegetables",
+                stock=40
+            ),
+
+            # Fruits (4 items)
+            models.Product(
+                name="Premium Alphonso Mangoes (6pcs)",
+                description="The king of mangoes. Extremely sweet, rich, fiberless, and intensely aromatic. Sourced directly from Devgad farms.",
+                price=699.00,
+                image_url="https://images.unsplash.com/photo-1553279768-865429fa0078?q=80&w=600&auto=format&fit=crop",
+                category="Fruits",
+                stock=20
+            ),
+            models.Product(
+                name="Organic Cavendish Bananas (1 Dozen)",
+                description="Sweet and creamy organic bananas. High in potassium and dietary fiber, a perfect healthy snack.",
+                price=99.00,
+                image_url="https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?q=80&w=600&auto=format&fit=crop",
+                category="Fruits",
+                stock=40
+            ),
+            models.Product(
+                name="Kashmiri Royal Gala Apples (4pcs)",
+                description="Crisp, red apples with a sweet, mild flavor sourced from the clean orchards of Kashmir valley.",
+                price=199.00,
+                image_url="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?q=80&w=600&auto=format&fit=crop",
+                category="Fruits",
+                stock=35
+            ),
+            models.Product(
+                name="Fresh Sweet Pomegranates (2pcs)",
+                description="Plump pomegranates filled with deep red, juicy, and sweet arils. Handpicked for quality.",
+                price=149.00,
+                image_url="https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?q=80&w=600&auto=format&fit=crop",
+                category="Fruits",
+                stock=25
+            ),
+
+            # Sweets (3 items)
+            models.Product(
+                name="Artisanal Kaju Katli (250g)",
+                description="Classic Indian sweet made from premium cashews, sugar, and decorated with silver leaf. Rich and melt-in-the-mouth texture.",
+                price=349.00,
+                image_url="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?q=80&w=600&auto=format&fit=crop",
+                category="Sweets",
+                stock=30
+            ),
+            models.Product(
+                name="Pure Milk Peda (250g)",
+                description="Traditional sweet prepared by evaporating organic milk until thick, sweetened, and flavored with green cardamom.",
+                price=249.00,
+                image_url="https://images.unsplash.com/photo-1601050690597-df056fb4ce78?q=80&w=600&auto=format&fit=crop",
+                category="Sweets",
+                stock=35
+            ),
+            models.Product(
+                name="Premium Dry Fruit Laddu (250g)",
+                description="Nutritious laddus made from organic dates, almonds, cashews, pistachios, and a touch of pure cow ghee. No added refined sugar.",
+                price=299.00,
+                image_url="https://images.unsplash.com/photo-1626132647523-66f5bf380027?q=80&w=600&auto=format&fit=crop",
+                category="Sweets",
+                stock=25
+            ),
+
+            # Snacks (2 items)
+            models.Product(
+                name="Baked Organic Banana Chips (200g)",
+                description="Crisp and lightly salted chips made from organic raw bananas, baked in cold-pressed coconut oil for a healthy crunch.",
+                price=129.00,
+                image_url="https://images.unsplash.com/photo-1600189020840-e9918c25269d?q=80&w=600&auto=format&fit=crop",
+                category="Snacks",
+                stock=50
+            ),
+            models.Product(
+                name="Spicy Roasted Makhana (150g)",
+                description="Nutritious lotus seeds slow-roasted to a perfect crunch, spiced with organic black pepper, turmeric, and rock salt.",
+                price=179.00,
+                image_url="https://images.unsplash.com/photo-1618043063544-e2007841c7b8?q=80&w=600&auto=format&fit=crop",
+                category="Snacks",
+                stock=40
             )
         ]
 
         db.add_all(products)
         db.commit()
-        print("Database successfully seeded with 10 premium products!")
+        print("Database successfully seeded with 20 premium Bharath organic farm products!")
     except Exception as e:
         db.rollback()
         print(f"Error seeding database: {e}")

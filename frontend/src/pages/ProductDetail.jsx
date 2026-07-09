@@ -77,50 +77,50 @@ export default function ProductDetail({ productId, onBack }) {
         {/* Right Side: Product Details */}
         <div className="md:col-span-6 space-y-8">
           <div className="space-y-4">
-            <span className="text-xs font-semibold px-3 py-1.5 rounded-lg glass shadow-sm uppercase tracking-wider text-brand-300">
+            <span className="text-xs font-bold px-3 py-1.5 rounded-lg glass shadow-sm uppercase tracking-wider text-brand-700">
               {product.category}
             </span>
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
+            <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-850 tracking-tight leading-tight">
               {product.name}
             </h1>
             <div className="flex items-center gap-4">
-              <span className="text-3xl font-black text-white">₹{product.price.toFixed(2)}</span>
+              <span className="text-3xl font-black text-brand-700">₹{product.price.toFixed(2)}</span>
               {isOutOfStock ? (
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-950/60 border border-red-800 text-xs font-bold text-red-400 uppercase tracking-wider">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 border border-red-200 text-xs font-bold text-red-650 uppercase tracking-wider">
                   <CircleAlert className="w-3.5 h-3.5" /> Out of stock
                 </span>
               ) : (
-                <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-emerald-950/60 border border-emerald-800 text-xs font-bold text-emerald-400 uppercase tracking-wider">
+                <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-250 text-xs font-bold text-emerald-650 uppercase tracking-wider">
                   In stock
                 </span>
               )}
             </div>
           </div>
 
-          <div className="border-t border-brand-800 pt-6">
-            <h2 className="text-sm font-bold text-white uppercase tracking-wider">Description</h2>
-            <p className="text-slate-400 text-sm font-light mt-3 leading-relaxed">
+          <div className="border-t border-brand-200/60 pt-6">
+            <h2 className="text-sm font-bold text-slate-800 uppercase tracking-wider">Description</h2>
+            <p className="text-slate-600 text-sm font-light mt-3 leading-relaxed">
               {product.description}
             </p>
           </div>
 
           {/* Add to Cart Actions */}
           {!isOutOfStock && (
-            <div className="space-y-4 border-t border-brand-800 pt-6">
+            <div className="space-y-4 border-t border-brand-200/60 pt-6">
               <div className="flex items-center gap-4">
-                <span className="text-sm font-bold text-white uppercase tracking-wider">Quantity</span>
-                <div className="flex items-center border border-brand-800 rounded-xl bg-brand-900 overflow-hidden">
+                <span className="text-sm font-bold text-slate-800 uppercase tracking-wider">Quantity</span>
+                <div className="flex items-center border border-brand-200 rounded-xl bg-white overflow-hidden">
                   <button
                     onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                    className="px-3 py-2 hover:bg-brand-800 text-slate-400 hover:text-white transition-colors"
+                    className="px-3 py-2 hover:bg-brand-50 text-slate-500 hover:text-slate-800 transition-colors"
                   >
                     -
                   </button>
-                  <span className="px-4 text-sm font-semibold text-white">{quantity}</span>
+                  <span className="px-4 text-sm font-semibold text-slate-800">{quantity}</span>
                   <button
                     onClick={() => setQuantity((q) => Math.min(product.stock, q + 1))}
                     disabled={quantity >= product.stock}
-                    className="px-3 py-2 hover:bg-brand-800 text-slate-400 hover:text-white disabled:text-slate-650 transition-colors"
+                    className="px-3 py-2 hover:bg-brand-50 text-slate-500 hover:text-slate-800 disabled:text-slate-300 transition-colors"
                   >
                     +
                   </button>
@@ -133,7 +133,7 @@ export default function ProductDetail({ productId, onBack }) {
               <div className="flex gap-4 pt-2">
                 <button
                   onClick={() => addToCart(product, quantity)}
-                  className="flex-1 flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-bold text-sm tracking-wider uppercase shadow-lg shadow-brand-500/10 active:scale-[0.98] transition-all"
+                  className="flex-1 flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-bold text-sm tracking-wider uppercase shadow-lg shadow-brand-500/15 active:scale-[0.98] transition-all"
                 >
                   <ShoppingCart className="w-4 h-4" />
                   Add to Shopping Bag
@@ -143,26 +143,26 @@ export default function ProductDetail({ productId, onBack }) {
           )}
 
           {/* Core Trust Badges */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 border-t border-brand-800 pt-6 text-slate-400 text-xs">
-            <div className="flex items-start gap-3 p-3.5 rounded-xl bg-brand-900/40 border border-brand-800/80">
-              <Truck className="w-5 h-5 text-brand-400 flex-shrink-0" />
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 border-t border-brand-200/60 pt-6 text-slate-500 text-xs">
+            <div className="flex items-start gap-3 p-3.5 rounded-xl bg-white border border-brand-200/80">
+              <Truck className="w-5 h-5 text-brand-500 flex-shrink-0" />
               <div>
-                <h4 className="font-bold text-white">Free Delivery</h4>
+                <h4 className="font-bold text-slate-800">Free Delivery</h4>
                 <p className="font-light mt-0.5 text-slate-500">Orders over ₹10,000</p>
               </div>
             </div>
-            <div className="flex items-start gap-3 p-3.5 rounded-xl bg-brand-900/40 border border-brand-800/80">
-              <ShieldCheck className="w-5 h-5 text-brand-400 flex-shrink-0" />
+            <div className="flex items-start gap-3 p-3.5 rounded-xl bg-white border border-brand-200/80">
+              <ShieldCheck className="w-5 h-5 text-brand-500 flex-shrink-0" />
               <div>
-                <h4 className="font-bold text-white">2 Year Warranty</h4>
-                <p className="font-light mt-0.5 text-slate-500">100% Genuine goods</p>
+                <h4 className="font-bold text-slate-800">Freshness Guarantee</h4>
+                <p className="font-light mt-0.5 text-slate-500">100% Organic & Handpicked</p>
               </div>
             </div>
-            <div className="flex items-start gap-3 p-3.5 rounded-xl bg-brand-900/40 border border-brand-800/80">
-              <RefreshCw className="w-5 h-5 text-brand-400 flex-shrink-0" />
+            <div className="flex items-start gap-3 p-3.5 rounded-xl bg-white border border-brand-200/80">
+              <RefreshCw className="w-5 h-5 text-brand-500 flex-shrink-0" />
               <div>
-                <h4 className="font-bold text-white">Easy Returns</h4>
-                <p className="font-light mt-0.5 text-slate-500">30-day money back</p>
+                <h4 className="font-bold text-slate-800">Easy Returns</h4>
+                <p className="font-light mt-0.5 text-slate-500">No questions asked</p>
               </div>
             </div>
           </div>

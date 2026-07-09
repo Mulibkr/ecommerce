@@ -6,28 +6,28 @@
 
 @layer base {
   body {
-    @apply bg-brand-950 text-slate-100 antialiased overflow-x-hidden selection:bg-brand-500 selection:text-white;
+    @apply bg-brand-50 text-slate-800 antialiased overflow-x-hidden selection:bg-brand-500 selection:text-white;
   }
 }
 
-/* Glassmorphism utilities */
+/* Glassmorphism utilities - updated for fresh light theme */
 .glass {
-  background: rgba(26, 35, 48, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(75, 128, 60, 0.08);
 }
 
 .glass-card {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  background: #ffffff;
+  border: 1px solid rgba(75, 128, 60, 0.08);
+  box-shadow: 0 4px 20px 0 rgba(75, 128, 60, 0.03);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-card:hover {
-  border-color: rgba(255, 255, 255, 0.12);
-  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.3);
+  border-color: rgba(75, 128, 60, 0.2);
+  box-shadow: 0 10px 30px 0 rgba(75, 128, 60, 0.08);
   transform: translateY(-2px);
 }
 
@@ -38,19 +38,19 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(26, 35, 48, 0.5);
+  background: rgba(244, 248, 245, 0.6);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(75, 128, 60, 0.15);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(75, 128, 60, 0.3);
 }
 
 /* Input Styles */
 .input-field {
-  @apply w-full bg-brand-900 border border-brand-800 rounded-lg px-4 py-2.5 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all duration-200;
+  @apply w-full bg-white border border-brand-200 rounded-lg px-4 py-2.5 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all duration-200;
 }

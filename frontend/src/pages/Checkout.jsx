@@ -108,7 +108,7 @@ export default function Checkout({ onBackToCatalog }) {
       {/* Back button */}
       <button 
         onClick={onBackToCatalog}
-        className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors group py-2"
+        className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-brand-700 transition-colors group py-2"
       >
         <ArrowLeft className="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" />
         Back to Catalog
@@ -116,16 +116,16 @@ export default function Checkout({ onBackToCatalog }) {
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Checkout Form */}
-        <div className="lg:col-span-7 glass border border-brand-800/80 rounded-3xl p-6 sm:p-8 space-y-6">
+        <div className="lg:col-span-7 glass border border-brand-200/60 rounded-3xl p-6 sm:p-8 space-y-6">
           <div>
-            <h2 className="text-2xl font-extrabold text-white tracking-tight">Checkout Details</h2>
-            <p className="text-slate-400 text-sm mt-1 font-light">
+            <h2 className="text-2xl font-extrabold text-slate-800 tracking-tight">Checkout Details</h2>
+            <p className="text-slate-550 text-sm mt-1 font-light">
               Please enter your details to complete your order.
             </p>
           </div>
 
           {error && (
-            <div className="flex gap-3 p-4 rounded-xl bg-red-950/40 border border-red-800 text-red-400 text-sm leading-relaxed">
+            <div className="flex gap-3 p-4 rounded-xl bg-red-50 border border-red-200 text-red-650 text-sm leading-relaxed">
               <CircleAlert className="w-5 h-5 flex-shrink-0" />
               <span>{error}</span>
             </div>
@@ -133,7 +133,7 @@ export default function Checkout({ onBackToCatalog }) {
 
           <form onSubmit={handleSubmit} className="space-y-5">
             <div className="space-y-2">
-              <label htmlFor="name" className="text-xs font-bold text-slate-400 uppercase tracking-wider block">Full Name</label>
+              <label htmlFor="name" className="text-xs font-bold text-slate-500 uppercase tracking-wider block">Full Name</label>
               <input
                 id="name"
                 name="name"
@@ -147,7 +147,7 @@ export default function Checkout({ onBackToCatalog }) {
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="email" className="text-xs font-bold text-slate-400 uppercase tracking-wider block">Email Address</label>
+              <label htmlFor="email" className="text-xs font-bold text-slate-500 uppercase tracking-wider block">Email Address</label>
               <input
                 id="email"
                 name="email"
@@ -160,9 +160,9 @@ export default function Checkout({ onBackToCatalog }) {
               />
             </div>
 
-            <div className="space-y-2 border-t border-brand-800 pt-6">
-              <div className="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-wider pb-2">
-                <CreditCard className="w-4 h-4 text-brand-400" /> Payment Details (Simulated)
+            <div className="space-y-2 border-t border-brand-200/60 pt-6">
+              <div className="flex items-center gap-2 text-xs font-bold text-slate-550 uppercase tracking-wider pb-2">
+                <CreditCard className="w-4 h-4 text-brand-500" /> Payment Details (Simulated)
               </div>
               <p className="text-xs text-slate-500 font-light leading-relaxed">
                 This is a mock transaction. No real credit card or bank details are required. Payment will be automatically cleared on submit.
@@ -172,7 +172,7 @@ export default function Checkout({ onBackToCatalog }) {
             <button
               type="submit"
               disabled={submitting || cartItems.length === 0}
-              className="w-full flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-brand-500 hover:bg-brand-600 disabled:bg-brand-900 disabled:text-slate-500 disabled:cursor-not-allowed text-white font-bold text-sm tracking-wider uppercase shadow-lg shadow-brand-500/10 active:scale-[0.98] transition-all"
+              className="w-full flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-brand-500 hover:bg-brand-600 disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed text-white font-bold text-sm tracking-wider uppercase shadow-lg shadow-brand-500/15 active:scale-[0.98] transition-all"
             >
               {submitting ? (
                 <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -186,42 +186,42 @@ export default function Checkout({ onBackToCatalog }) {
         </div>
 
         {/* Order Summary Sidebar */}
-        <div className="lg:col-span-5 glass border border-brand-800/80 rounded-3xl p-6 sm:p-8 space-y-6">
-          <h3 className="text-lg font-bold text-white tracking-tight border-b border-brand-800/80 pb-4">Order Summary</h3>
+        <div className="lg:col-span-5 glass border border-brand-200/60 rounded-3xl p-6 sm:p-8 space-y-6">
+          <h3 className="text-lg font-bold text-slate-850 tracking-tight border-b border-brand-200/60 pb-4">Order Summary</h3>
 
           {cartItems.length === 0 ? (
             <p className="text-slate-500 text-sm font-light">No items in your cart.</p>
           ) : (
-            <div className="divide-y divide-brand-800/50">
+            <div className="divide-y divide-brand-100">
               {cartItems.map((item) => (
                 <div key={item.id} className="flex gap-4 py-4 first:pt-0 last:pb-0">
                   <img
                     src={item.image_url}
                     alt={item.name}
-                    className="w-14 h-14 object-cover rounded-lg bg-brand-900 border border-brand-800/80 flex-shrink-0"
+                    className="w-14 h-14 object-cover rounded-lg bg-brand-50 border border-brand-100 flex-shrink-0"
                   />
                   <div className="flex-1 min-w-0">
-                    <h4 className="text-sm font-bold text-white truncate">{item.name}</h4>
+                    <h4 className="text-sm font-bold text-slate-800 truncate">{item.name}</h4>
                     <p className="text-xs text-slate-500 mt-0.5 font-light">Qty: {item.quantity} × ₹{item.price.toFixed(2)}</p>
                   </div>
-                  <span className="text-sm font-bold text-white ml-2">₹{(item.price * item.quantity).toFixed(2)}</span>
+                  <span className="text-sm font-bold text-slate-850 ml-2">₹{(item.price * item.quantity).toFixed(2)}</span>
                 </div>
               ))}
             </div>
           )}
 
-          <div className="border-t border-brand-800 pt-6 space-y-4 text-sm">
-            <div className="flex justify-between text-slate-400 font-light">
+          <div className="border-t border-brand-200/60 pt-6 space-y-4 text-sm">
+            <div className="flex justify-between text-slate-500 font-light">
               <span>Shipping</span>
-              <span className="text-emerald-400 font-medium">Free</span>
+              <span className="text-emerald-600 font-medium">Free</span>
             </div>
-            <div className="flex justify-between text-slate-400 font-light">
+            <div className="flex justify-between text-slate-500 font-light">
               <span>Estimated Tax</span>
-              <span className="text-white font-medium">₹0.00</span>
+              <span className="text-slate-800 font-medium">₹0.00</span>
             </div>
-            <div className="border-t border-brand-800/85 pt-4 flex justify-between items-baseline">
-              <span className="text-base font-bold text-white">Total Amount</span>
-              <span className="text-2xl font-black text-brand-300">₹{cartTotal.toFixed(2)}</span>
+            <div className="border-t border-brand-200/60 pt-4 flex justify-between items-baseline">
+              <span className="text-base font-bold text-slate-850">Total Amount</span>
+              <span className="text-2xl font-black text-brand-700">₹{cartTotal.toFixed(2)}</span>
             </div>
           </div>
         </div>

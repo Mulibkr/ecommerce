@@ -16,18 +16,18 @@ export default function Home({
   return (
     <div className="space-y-12 pb-16">
       {/* Hero Section */}
-      <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-900/40 via-brand-850/20 to-brand-950 border border-brand-800/80 px-8 py-16 md:py-24 text-center md:text-left md:px-16 flex flex-col md:flex-row justify-between items-center gap-10">
+      <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-100 via-brand-50 to-white border border-brand-200/50 px-8 py-16 md:py-24 text-center md:text-left md:px-16 flex flex-col md:flex-row justify-between items-center gap-10">
         <div className="space-y-6 max-w-2xl animate-slide-up">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass border border-brand-800 text-xs font-semibold text-brand-300 tracking-wider uppercase">
-            <Sparkles className="w-3.5 h-3.5" />
-            Curated Design & Tech Store
+          <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-brand-100 text-xs font-bold text-brand-700 tracking-wider uppercase">
+            <Sparkles className="w-3.5 h-3.5 text-brand-500" />
+            100% Pure, Organic & Direct From Farmers
           </div>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-white leading-[1.1]">
-            Elevate Your <br className="hidden md:inline" />
-            <span className="bg-gradient-to-r from-brand-300 via-white to-brand-500 bg-clip-text text-transparent">Daily Experience</span>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-800 leading-[1.1]">
+            Fresh & Organic <br className="hidden md:inline" />
+            <span className="bg-gradient-to-r from-brand-600 via-brand-700 to-brand-500 bg-clip-text text-transparent">Bharath Farm Goods</span>
           </h1>
-          <p className="text-slate-400 text-base sm:text-lg font-light leading-relaxed max-w-lg">
-            A premium collection of minimalist workspace items, audio gear, and lifestyle products designed with absolute precision.
+          <p className="text-slate-600 text-base sm:text-lg font-light leading-relaxed max-w-lg">
+            Handpicked vegetables, organic groceries, fresh local fruits, traditional sweets, and crispy farm-fresh snacks delivered directly to your doorstep.
           </p>
           <div className="flex flex-wrap items-center gap-4 justify-center md:justify-start">
             <button 
@@ -35,19 +35,19 @@ export default function Home({
                 const element = document.getElementById('catalog');
                 element?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="group flex items-center gap-2 px-6 py-3 rounded-xl bg-white hover:bg-slate-100 text-brand-950 font-bold text-sm tracking-wider uppercase shadow-lg shadow-white/5 active:scale-95 transition-all"
+              className="group flex items-center gap-2 px-6 py-3.5 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-bold text-sm tracking-wider uppercase shadow-lg shadow-brand-500/10 active:scale-95 transition-all"
             >
-              Shop Collection
+              Shop Catalog
               <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
         </div>
 
         {/* Hero Decorative Image Overlay */}
-        <div className="relative w-full max-w-xs md:max-w-md aspect-square rounded-2xl overflow-hidden glass border border-brand-800 shadow-2xl p-2 hidden sm:block animate-fade-in">
-          <div className="absolute inset-0 bg-gradient-to-tr from-brand-900/60 to-transparent z-10 pointer-events-none" />
+        <div className="relative w-full max-w-xs md:max-w-md aspect-square rounded-2xl overflow-hidden glass border border-brand-200/60 shadow-xl p-2 hidden sm:block animate-fade-in">
+          <div className="absolute inset-0 bg-gradient-to-tr from-brand-100/10 to-transparent z-10 pointer-events-none" />
           <img
-            src="/assets/wireless_headphones.jpg"
+            src="/assets/organic_honey.jpg"
             alt="Hero Spotlight"
             className="w-full h-full object-cover rounded-xl"
           />
@@ -56,10 +56,10 @@ export default function Home({
 
       {/* Catalog Filter Header */}
       <section id="catalog" className="scroll-mt-24 space-y-8">
-        <div className="flex flex-col gap-6 md:flex-row md:items-end justify-between border-b border-brand-800 pb-6">
+        <div className="flex flex-col gap-6 md:flex-row md:items-end justify-between border-b border-brand-200/60 pb-6">
           <div>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-white tracking-tight">Our Catalog</h2>
-            <p className="text-slate-400 text-sm mt-1 font-light">
+            <h2 className="text-2xl md:text-3xl font-extrabold text-slate-800 tracking-tight">Our Catalog</h2>
+            <p className="text-slate-500 text-sm mt-1 font-light">
               Showing {products.length} products {activeCategory ? `in ${activeCategory}` : ''}
             </p>
           </div>
@@ -86,7 +86,7 @@ export default function Home({
               <select
                 value={sortBy}
                 onChange={(e) => onSortChange(e.target.value)}
-                className="input-field text-sm bg-brand-900/80 border-brand-800"
+                className="input-field text-sm bg-white border-brand-250"
               >
                 <option value="">Sort by: Featured</option>
                 <option value="price_asc">Price: Low to High</option>
@@ -98,8 +98,8 @@ export default function Home({
 
         {/* Product Cards Grid */}
         {products.length === 0 ? (
-          <div className="py-24 text-center glass border border-brand-800 rounded-3xl max-w-xl mx-auto space-y-4">
-            <h3 className="text-xl font-bold text-slate-300">No products found</h3>
+          <div className="py-24 text-center glass border border-brand-200 rounded-3xl max-w-xl mx-auto space-y-4">
+            <h3 className="text-xl font-bold text-slate-700">No products found</h3>
             <p className="text-slate-500 text-sm font-light max-w-sm mx-auto">
               We couldn't find any products matching your current query. Try adjusting your filters or search terms.
             </p>
@@ -109,7 +109,7 @@ export default function Home({
                 onSearch('');
                 onSortChange('');
               }}
-              className="px-4 py-2 rounded-xl bg-brand-800 hover:bg-brand-700 font-semibold text-xs text-white uppercase tracking-wider transition-all"
+              className="px-4 py-2.5 rounded-xl bg-brand-500 hover:bg-brand-600 font-bold text-xs text-white uppercase tracking-wider transition-all"
             >
               Reset Filters
             </button>
