@@ -9,6 +9,17 @@ import schemas
 # Create database tables
 Base.metadata.create_all(bind=engine)
 
+# Auto-seed database if empty (useful for Vercel deployments)
+from database import SessionLocal
+db = SessionLocal()
+try:
+    if db.query(models.Product).count() == 0:
+        from seed import seed_db
+        seed_db(clear=False)
+finally:
+    db.close()
+
+
 app = FastAPI(title="Aura Market API", version="1.0.0")
 
 # Configure CORS

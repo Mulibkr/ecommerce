@@ -2,7 +2,13 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-DATABASE_URL = "sqlite:///./ecommerce.db"
+import os
+
+if os.environ.get("VERCEL"):
+    DATABASE_URL = "sqlite:////tmp/ecommerce.db"
+else:
+    DATABASE_URL = "sqlite:///./ecommerce.db"
+
 
 # connect_args={"check_same_thread": False} is needed only for SQLite
 engine = create_engine(

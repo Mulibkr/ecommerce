@@ -2,10 +2,12 @@ from sqlalchemy.orm import Session
 from database import engine, SessionLocal, Base
 import models
 
-def seed_db():
-    # Recreate tables to clear old data
-    Base.metadata.drop_all(bind=engine)
+def seed_db(clear=True):
+    if clear:
+        # Recreate tables to clear old data
+        Base.metadata.drop_all(bind=engine)
     Base.metadata.create_all(bind=engine)
+
 
     db: Session = SessionLocal()
     try:
