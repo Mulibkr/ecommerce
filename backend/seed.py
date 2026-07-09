@@ -60,12 +60,44 @@ def seed_db(clear=True):
                 image_url="/assets/scented_candle.jpg",
                 category="Lifestyle",
                 stock=30
+            ),
+            models.Product(
+                name="Bharath Organic Wild Honey",
+                description="100% pure, raw, and organic forest honey collected from naturally occurring beehives. Rich in antioxidants and minerals.",
+                price=799.00,
+                image_url="/assets/organic_honey.jpg",
+                category="Food",
+                stock=50
+            ),
+            models.Product(
+                name="Malabar Artisanal Filter Coffee",
+                description="Premium blend of fresh chicory and Arabica beans, roasted to perfection to deliver the authentic, rich aroma of South Indian filter coffee.",
+                price=449.00,
+                image_url="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=600&auto=format&fit=crop",
+                category="Food",
+                stock=60
+            ),
+            models.Product(
+                name="ZenBook Ultra-Slim Laptop",
+                description="14-inch thin and light laptop featuring an Intel Core i7 processor, 16GB RAM, 512GB SSD, and a stunning 2K OLED display. Ideal for productivity on the go.",
+                price=84999.00,
+                image_url="https://images.unsplash.com/photo-1496181130204-755241524eab?q=80&w=600&auto=format&fit=crop",
+                category="Laptops",
+                stock=12
+            ),
+            models.Product(
+                name="Horizon ROG Gaming Laptop",
+                description="Ultimate gaming beast powered by NVIDIA RTX 4060, AMD Ryzen 7, 16GB RAM, and a 144Hz high-refresh display. Dominate every game with advanced cooling technology.",
+                price=119999.00,
+                image_url="https://images.unsplash.com/photo-1603302576837-37561b2e2302?q=80&w=600&auto=format&fit=crop",
+                category="Laptops",
+                stock=8
             )
         ]
 
         db.add_all(products)
         db.commit()
-        print("Database successfully seeded with 6 premium products!")
+        print("Database successfully seeded with 10 premium products!")
     except Exception as e:
         db.rollback()
         print(f"Error seeding database: {e}")
