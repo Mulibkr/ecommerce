@@ -1,0 +1,31 @@
+# Node/Frontend dependencies
+frontend/node_modules/
+frontend/dist/
+
+# Portable runtimes
+node-portable/
+git-portable/
+*.zip
+
+# Python/Backend dependencies
+backend/venv/
+backend/__pycache__/
+backend/instance/
+backend/.pytest_cache/
+backend/*.pyc
+
+# Local SQLite databases
+backend/*.db
+*.db
+
+# Environment variables
+.env
+.env.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Helper scripts
+setup_node.ps1
+setup_git.ps1
