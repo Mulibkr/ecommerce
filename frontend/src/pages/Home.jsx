@@ -47,7 +47,7 @@ export default function Home({
         <div className="relative w-full max-w-xs md:max-w-md aspect-square rounded-2xl overflow-hidden glass border border-brand-200/60 shadow-xl p-2 hidden sm:block animate-fade-in">
           <div className="absolute inset-0 bg-gradient-to-tr from-brand-100/10 to-transparent z-10 pointer-events-none" />
           <img
-            src="/assets/organic_honey.jpg"
+            src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=600&auto=format&fit=crop"
             alt="Hero Spotlight"
             className="w-full h-full object-cover rounded-xl"
           />

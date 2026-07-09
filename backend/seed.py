@@ -14,10 +14,10 @@ def seed_db(clear=True):
         products = [
             # Groceries / Organic Food (6 items)
             models.Product(
-                name="Bharath Organic Wild Honey",
-                description="100% pure, raw, and organic forest honey collected from naturally occurring beehives. Rich in antioxidants and minerals.",
-                price=799.00,
-                image_url="/assets/organic_honey.jpg",
+                name="Organic Yellow Moong Dal (1kg)",
+                description="Organic split yellow moong dal, high in protein and easy to digest. Sourced from certified chemical-free farms.",
+                price=199.00,
+                image_url="https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?q=80&w=600&auto=format&fit=crop",
                 category="Organic Food",
                 stock=50
             ),
@@ -140,25 +140,25 @@ def seed_db(clear=True):
 
             # Sweets (3 items)
             models.Product(
-                name="Artisanal Kaju Katli (250g)",
-                description="Classic Indian sweet made from premium cashews, sugar, and decorated with silver leaf. Rich and melt-in-the-mouth texture.",
-                price=349.00,
+                name="Sweet Madatha Kaja (250g)",
+                description="Traditional Andhra sweet made from layered wheat flour dough, deep-fried to a crisp golden brown, and soaked in cardamom-flavored sugar syrup.",
+                price=189.00,
                 image_url="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?q=80&w=600&auto=format&fit=crop",
                 category="Sweets",
                 stock=30
             ),
             models.Product(
-                name="Pure Milk Peda (250g)",
-                description="Traditional sweet prepared by evaporating organic milk until thick, sweetened, and flavored with green cardamom.",
-                price=249.00,
+                name="Traditional Milk Kova (250g)",
+                description="Authentic, rich milk kova prepared by slow-reducing organic whole milk until thick and sweetened. Soft, grainy, and full of natural dairy flavor.",
+                price=199.00,
                 image_url="https://images.unsplash.com/photo-1601050690597-df056fb4ce78?q=80&w=600&auto=format&fit=crop",
                 category="Sweets",
                 stock=35
             ),
             models.Product(
-                name="Premium Dry Fruit Laddu (250g)",
-                description="Nutritious laddus made from organic dates, almonds, cashews, pistachios, and a touch of pure cow ghee. No added refined sugar.",
-                price=299.00,
+                name="Juicy Gulab Jamun (8pcs)",
+                description="Soft, spongy milk-solid dumplings fried to a golden brown and soaked in hot rosewater and saffron cardamom sugar syrup. A classic treat.",
+                price=149.00,
                 image_url="https://images.unsplash.com/photo-1626132647523-66f5bf380027?q=80&w=600&auto=format&fit=crop",
                 category="Sweets",
                 stock=25
