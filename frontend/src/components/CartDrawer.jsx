@@ -67,11 +67,11 @@ export default function CartDrawer({ isOpen, onClose, onCheckout }) {
                             {item.name}
                           </h4>
                           <span className="text-sm font-bold text-white ml-2">
-                            ${(item.price * item.quantity).toFixed(2)}
+                            ₹{(item.price * item.quantity).toFixed(2)}
                           </span>
                         </div>
                         <span className="text-xs text-slate-500 block font-light mt-0.5">
-                          ${item.price.toFixed(2)} each
+                          ₹{item.price.toFixed(2)} each
                         </span>
                       </div>
 
@@ -117,7 +117,7 @@ export default function CartDrawer({ isOpen, onClose, onCheckout }) {
               <div className="border-t border-brand-800 px-6 py-6 space-y-4 bg-brand-950/20">
                 <div className="flex justify-between text-base font-medium text-slate-300">
                   <span>Subtotal</span>
-                  <span className="text-xl font-black text-white">${cartTotal.toFixed(2)}</span>
+                  <span className="text-xl font-black text-white">₹{cartTotal.toFixed(2)}</span>
                 </div>
                 <p className="text-xs text-slate-500 font-light">
                   Shipping and taxes calculated at checkout.

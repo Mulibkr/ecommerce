@@ -133,10 +133,10 @@ export default function App() {
               <div className="bg-brand-900 border border-brand-800 p-2 rounded-lg">
                 <Sparkles className="w-4 h-4 text-brand-400" />
               </div>
-              <span className="font-extrabold tracking-wider text-white">AURA MARKET</span>
+              <span className="font-extrabold tracking-wider text-white">BHARATH MARKET</span>
             </div>
             <p className="text-xs text-slate-500 font-light flex items-center gap-1">
-              Made with <Heart className="w-3.5 h-3.5 text-red-500 fill-current" /> by Aura Lab. &copy; {new Date().getFullYear()} Aura Inc.
+              Made with <Heart className="w-3.5 h-3.5 text-red-500 fill-current" /> by Bharath Lab. &copy; {new Date().getFullYear()} Bharath Inc.
             </p>
           </div>
         </footer>

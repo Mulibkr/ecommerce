@@ -14,9 +14,9 @@ def seed_db(clear=True):
         # Mock product list
         products = [
             models.Product(
-                name="Aura Wireless ANC Headphones",
+                name="Bharath Wireless ANC Headphones",
                 description="Experience pristine, high-fidelity sound. Designed with active noise cancellation, custom audio tuning, and premium leather earcups for maximum comfort during long listening sessions.",
-                price=299.99,
+                price=24999.00,
                 image_url="/assets/wireless_headphones.jpg",
                 category="Audio",
                 stock=25
@@ -24,7 +24,7 @@ def seed_db(clear=True):
             models.Product(
                 name="Horizon Smartwatch Pro",
                 description="A futuristic wearable with a titanium case, vibrant always-on AMOLED display, heart rate and oxygen monitoring, and up to 7 days of battery life.",
-                price=349.99,
+                price=28999.00,
                 image_url="/assets/smart_watch.jpg",
                 category="Wearables",
                 stock=15
@@ -32,7 +32,7 @@ def seed_db(clear=True):
             models.Product(
                 name="Nomad Mechanical Keyboard",
                 description="Compact 65% mechanical keyboard with tactile hot-swappable switches, premium PBT keycaps, and customizable subtle RGB backlighting for an aesthetic typing experience.",
-                price=159.99,
+                price=12999.00,
                 image_url="/assets/mechanical_keyboard.jpg",
                 category="Accessories",
                 stock=40
@@ -40,7 +40,7 @@ def seed_db(clear=True):
             models.Product(
                 name="Vanguard Leather Backpack",
                 description="Handcrafted from full-grain premium leather. Features a dedicated padded 16-inch laptop sleeve, hidden security pockets, and weather-resistant zippers.",
-                price=189.99,
+                price=14999.00,
                 image_url="/assets/leather_backpack.jpg",
                 category="Lifestyle",
                 stock=10
@@ -48,7 +48,7 @@ def seed_db(clear=True):
             models.Product(
                 name="Element Wool Felt Desk Pad",
                 description="Add warmth and tactile comfort to your workspace. Made from premium sustainable wool felt with a non-slip natural rubber backing.",
-                price=49.99,
+                price=3999.00,
                 image_url="/assets/desk_pad.jpg",
                 category="Accessories",
                 stock=50
@@ -56,7 +56,7 @@ def seed_db(clear=True):
             models.Product(
                 name="Amber & Oak Scented Candle",
                 description="Hand-poured natural soy wax candle in a textured minimalist ceramic vessel. Emits notes of amber, oakmoss, and warm vanilla to set a relaxing vibe.",
-                price=29.99,
+                price=2499.00,
                 image_url="/assets/scented_candle.jpg",
                 category="Lifestyle",
                 stock=30

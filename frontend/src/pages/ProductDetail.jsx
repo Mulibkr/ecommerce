@@ -84,7 +84,7 @@ export default function ProductDetail({ productId, onBack }) {
               {product.name}
             </h1>
             <div className="flex items-center gap-4">
-              <span className="text-3xl font-black text-white">${product.price.toFixed(2)}</span>
+              <span className="text-3xl font-black text-white">₹{product.price.toFixed(2)}</span>
               {isOutOfStock ? (
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-950/60 border border-red-800 text-xs font-bold text-red-400 uppercase tracking-wider">
                   <CircleAlert className="w-3.5 h-3.5" /> Out of stock
@@ -148,7 +148,7 @@ export default function ProductDetail({ productId, onBack }) {
               <Truck className="w-5 h-5 text-brand-400 flex-shrink-0" />
               <div>
                 <h4 className="font-bold text-white">Free Delivery</h4>
-                <p className="font-light mt-0.5 text-slate-500">Orders over $150</p>
+                <p className="font-light mt-0.5 text-slate-500">Orders over ₹10,000</p>
               </div>
             </div>
             <div className="flex items-start gap-3 p-3.5 rounded-xl bg-brand-900/40 border border-brand-800/80">

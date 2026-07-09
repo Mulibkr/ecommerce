@@ -15,7 +15,7 @@ export default function Navbar({ onOpenCart, onSearch, searchQuery, activeCatego
               <Sparkles className="w-5 h-5 text-white" />
             </div>
             <span className="font-extrabold text-2xl tracking-wider bg-gradient-to-r from-white via-slate-200 to-brand-400 bg-clip-text text-transparent">
-              AURA
+              BHARATH
             </span>
           </div>
 

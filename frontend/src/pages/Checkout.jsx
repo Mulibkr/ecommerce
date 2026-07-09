@@ -73,7 +73,7 @@ export default function Checkout({ onBackToCatalog }) {
         <div className="space-y-3">
           <h1 className="text-3xl font-black text-white tracking-tight">Order Placed Successfully!</h1>
           <p className="text-slate-400 font-light text-sm max-w-sm mx-auto leading-relaxed">
-            Thank you for shopping with Aura. Your order has been registered and is now being processed.
+            Thank you for shopping with Bharath. Your order has been registered and is now being processed.
           </p>
         </div>
 
@@ -89,7 +89,7 @@ export default function Checkout({ onBackToCatalog }) {
           </div>
           <div className="pt-3 border-t border-brand-800/80 flex justify-between items-baseline">
             <span className="text-sm text-slate-400 font-light">Amount Charged:</span>
-            <span className="text-2xl font-black text-white">${orderConfirmation.total_amount.toFixed(2)}</span>
+            <span className="text-2xl font-black text-white">₹{orderConfirmation.total_amount.toFixed(2)}</span>
           </div>
         </div>
 
@@ -178,7 +178,7 @@ export default function Checkout({ onBackToCatalog }) {
                 <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
               ) : (
                 <>
-                  Place Order & Pay ${cartTotal.toFixed(2)}
+                  Place Order & Pay ₹{cartTotal.toFixed(2)}
                 </>
               )}
             </button>
@@ -202,9 +202,9 @@ export default function Checkout({ onBackToCatalog }) {
                   />
                   <div className="flex-1 min-w-0">
                     <h4 className="text-sm font-bold text-white truncate">{item.name}</h4>
-                    <p className="text-xs text-slate-500 mt-0.5 font-light">Qty: {item.quantity} × ${item.price.toFixed(2)}</p>
+                    <p className="text-xs text-slate-500 mt-0.5 font-light">Qty: {item.quantity} × ₹{item.price.toFixed(2)}</p>
                   </div>
-                  <span className="text-sm font-bold text-white ml-2">${(item.price * item.quantity).toFixed(2)}</span>
+                  <span className="text-sm font-bold text-white ml-2">₹{(item.price * item.quantity).toFixed(2)}</span>
                 </div>
               ))}
             </div>
@@ -217,11 +217,11 @@ export default function Checkout({ onBackToCatalog }) {
             </div>
             <div className="flex justify-between text-slate-400 font-light">
               <span>Estimated Tax</span>
-              <span className="text-white font-medium">$0.00</span>
+              <span className="text-white font-medium">₹0.00</span>
             </div>
             <div className="border-t border-brand-800/85 pt-4 flex justify-between items-baseline">
               <span className="text-base font-bold text-white">Total Amount</span>
-              <span className="text-2xl font-black text-brand-300">${cartTotal.toFixed(2)}</span>
+              <span className="text-2xl font-black text-brand-300">₹{cartTotal.toFixed(2)}</span>
             </div>
           </div>
         </div>

@@ -48,7 +48,7 @@ export default function ProductCard({ product, onSelect }) {
           <div>
             <span className="text-xs text-slate-400 block font-medium">Price</span>
             <span className="text-xl font-extrabold text-white tracking-tight">
-              ${product.price.toFixed(2)}
+              ₹{product.price.toFixed(2)}
             </span>
           </div>
 
