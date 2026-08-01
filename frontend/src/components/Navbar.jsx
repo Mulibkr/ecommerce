@@ -17,7 +17,7 @@ export default function Navbar({ onOpenCart, onSearch, searchQuery, activeCatego
               className="w-12 h-12 rounded-full object-cover border-2 border-brand-500 shadow-md shadow-brand-500/10"
             />
             <span className="font-extrabold text-xl tracking-wider text-brand-700 font-sans">
-              BHARATH ORGANICS
+              BHARATH ORGANIC
             </span>
           </div>
 

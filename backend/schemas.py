@@ -10,6 +10,7 @@ class ProductBase(BaseModel):
     image_url: Optional[str] = None
     category: str
     stock: int
+    is_trending: Optional[bool] = False
 
 class ProductCreate(ProductBase):
     pass

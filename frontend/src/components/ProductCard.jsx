@@ -24,6 +24,13 @@ export default function ProductCard({ product, onSelect }) {
           {product.category}
         </span>
         
+        {/* Trending Badge */}
+        {product.is_trending && (
+          <span className="absolute top-4 right-4 text-[10px] font-black px-2.5 py-1 rounded-lg bg-amber-500 text-white shadow-sm uppercase tracking-wider flex items-center gap-1">
+            🔥 Trending
+          </span>
+        )}
+        
         {/* Out of Stock Overlay */}
         {isOutOfStock && (
           <div className="absolute inset-0 bg-white/80 backdrop-blur-[1px] flex flex-col items-center justify-center text-red-600 gap-1.5">

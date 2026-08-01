@@ -130,3 +130,34 @@ def create_order(order_in: schemas.OrderCreate, db: Session = Depends(get_db)):
     except Exception as e:
         db.rollback()
         raise HTTPException(status_code=500, detail=f"Failed to create order: {str(e)}")
+
+
+@app.get("/api/orders", response_model=List[schemas.OrderResponse])
+def get_orders(db: Session = Depends(get_db)):
+    # Returns all orders ordered by created_at descending
+    return db.query(models.Order).order_by(models.Order.created_at.desc()).all()
+
+
+@app.get("/api/orders/{order_id}", response_model=schemas.OrderResponse)
+def get_order(order_id: int, db: Session = Depends(get_db)):
+    order = db.query(models.Order).filter(models.Order.id == order_id).first()
+    if not order:
+        raise HTTPException(status_code=404, detail="Order not found")
+    return order
+
+
+@app.patch("/api/orders/{order_id}/status", response_model=schemas.OrderResponse)
+def update_order_status(order_id: int, status: str = Query(..., description="Pending, Processing, Shipped, or Delivered"), db: Session = Depends(get_db)):
+    order = db.query(models.Order).filter(models.Order.id == order_id).first()
+    if not order:
+        raise HTTPException(status_code=404, detail="Order not found")
+    
+    valid_statuses = ["Pending", "Processing", "Shipped", "Delivered"]
+    if status not in valid_statuses:
+        raise HTTPException(status_code=400, detail=f"Invalid status. Must be one of {valid_statuses}")
+        
+    order.status = status
+    db.commit()
+    db.refresh(order)
+    return order
+

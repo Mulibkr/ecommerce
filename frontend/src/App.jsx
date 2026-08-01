@@ -4,6 +4,7 @@ import CartDrawer from './components/CartDrawer';
 import Home from './pages/Home';
 import ProductDetail from './pages/ProductDetail';
 import Checkout from './pages/Checkout';
+import AdminDashboard from './pages/AdminDashboard';
 import { CartProvider } from './context/CartContext';
 import { Sparkles, Heart } from 'lucide-react';
 
@@ -68,7 +69,7 @@ export default function App() {
 
   return (
     <CartProvider>
-      <div className="flex flex-col min-h-screen bg-brand-950">
+      <div className="flex flex-col min-h-screen bg-brand-50">
         {/* Navigation Bar */}
         <Navbar
           onOpenCart={handleOpenCart}
@@ -124,20 +125,34 @@ export default function App() {
               onBackToCatalog={handleBackToCatalog}
             />
           )}
+
+          {currentPage === 'admin' && (
+            <AdminDashboard
+              onBack={handleBackToCatalog}
+            />
+          )}
         </main>
 
         {/* Footer */}
-        <footer className="bg-brand-950 border-t border-brand-900/60 py-8 mt-12">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left flex flex-col sm:flex-row justify-between items-center gap-6">
+        <footer className="bg-white border-t border-brand-200/80 py-8 mt-12">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-6">
             <div className="flex items-center gap-2">
-              <div className="bg-brand-900 border border-brand-800 p-2 rounded-lg">
-                <Sparkles className="w-4 h-4 text-brand-400" />
+              <div className="bg-brand-50 border border-brand-100 p-2 rounded-lg">
+                <Sparkles className="w-4 h-4 text-brand-600" />
               </div>
-              <span className="font-extrabold tracking-wider text-white">BHARATH MARKET</span>
+              <span className="font-extrabold tracking-wider text-brand-700">BHARATH ORGANIC</span>
             </div>
-            <p className="text-xs text-slate-500 font-light flex items-center gap-1">
-              Made with <Heart className="w-3.5 h-3.5 text-red-500 fill-current" /> by Bharath Lab. &copy; {new Date().getFullYear()} Bharath Inc.
-            </p>
+            <div className="flex items-center gap-6">
+              <button 
+                onClick={() => setCurrentPage('admin')}
+                className="text-xs font-bold text-brand-600 hover:text-brand-700 transition-all uppercase tracking-wider"
+              >
+                Orders Dashboard
+              </button>
+              <p className="text-xs text-slate-500 font-light flex items-center gap-1">
+                Made with <Heart className="w-3.5 h-3.5 text-red-500 fill-current" /> by Bharath Lab. &copy; {new Date().getFullYear()} BHARATH ORGANIC.
+              </p>
+            </div>
           </div>
         </footer>
       </div>

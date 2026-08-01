@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Float, ForeignKey, DateTime
+from sqlalchemy import Column, Integer, String, Float, ForeignKey, DateTime, Boolean
 from sqlalchemy.orm import relationship
 from datetime import datetime
 from database import Base
@@ -13,6 +13,7 @@ class Product(Base):
     image_url = Column(String, nullable=True)
     category = Column(String, nullable=False, index=True)
     stock = Column(Integer, default=0)
+    is_trending = Column(Boolean, default=False)
 
     # Relationships
     order_items = relationship("OrderItem", back_populates="product")
