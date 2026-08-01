@@ -28,26 +28,26 @@
   }
 }
 
-/* Glassmorphism utilities - updated for fresh light theme with gold-green borders */
+/* Glassmorphism utilities - updated for fresh light theme with Zepto purple borders */
 .glass {
   background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(26, 67, 20, 0.1);
+  border-bottom: 1px solid rgba(109, 40, 217, 0.1);
 }
 
 .glass-card {
   background: rgba(255, 255, 255, 0.82);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(26, 67, 20, 0.1);
-  box-shadow: 0 4px 20px 0 rgba(26, 67, 20, 0.03);
+  border: 1px solid rgba(109, 40, 217, 0.1);
+  box-shadow: 0 4px 20px 0 rgba(109, 40, 217, 0.03);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-card:hover {
   background: rgba(255, 255, 255, 0.95);
-  border-color: rgba(26, 67, 20, 0.25);
-  box-shadow: 0 10px 30px 0 rgba(26, 67, 20, 0.08);
+  border-color: rgba(109, 40, 217, 0.25);
+  box-shadow: 0 10px 30px 0 rgba(109, 40, 217, 0.08);
   transform: translateY(-2px);
 }
 

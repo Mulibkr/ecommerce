@@ -165,15 +165,15 @@ export default function TrackOrderModal({ isOpen, onClose }) {
               {/* Map Grid Grid Lines */}
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-brand-100/10 via-transparent to-transparent pointer-events-none" />
               <div className="absolute inset-0 opacity-15" style={{ 
-                backgroundImage: 'radial-gradient(circle, #2d5a27 1.5px, transparent 1.5px)', 
+                backgroundImage: 'radial-gradient(circle, #7c3aed 1.5px, transparent 1.5px)', 
                 backgroundSize: '24px 24px' 
               }} />
 
-              {/* Start & End Milestones (Bharath Farm and Customer Home) */}
+              {/* Start & End Milestones (Bharath Foods and Customer Home) */}
               <div className="flex justify-between items-center relative z-10">
                 <div className="flex items-center gap-1.5 bg-white border border-brand-200/80 px-2.5 py-1.5 rounded-xl shadow-sm">
                   <MapPin className="w-3.5 h-3.5 text-brand-600" />
-                  <span className="text-[10px] font-black text-slate-800 uppercase">Bharath Farm</span>
+                  <span className="text-[10px] font-black text-slate-800 uppercase">Bharath Foods</span>
                 </div>
                 <div className="flex items-center gap-1.5 bg-white border border-brand-200/80 px-2.5 py-1.5 rounded-xl shadow-sm">
                   <MapPin className="w-3.5 h-3.5 text-red-500 animate-bounce" />
@@ -225,13 +225,13 @@ export default function TrackOrderModal({ isOpen, onClose }) {
                 {orderData.status === 'Processing' && (
                   <>
                     <p className="text-slate-500">• [16:54] Order confirmed by customer.</p>
-                    <p>• [17:02] Order accepted. Items are being handpicked and packaged at Bharath Organic Farm.</p>
+                    <p>• [17:02] Order accepted. Items are being handpicked and packaged at Bharath Foods Store.</p>
                   </>
                 )}
                 {orderData.status === 'Shipped' && (
                   <>
                     <p className="text-slate-400">• [16:54] Order confirmed by customer.</p>
-                    <p className="text-slate-400">• [17:02] Order packaged at Bharath Organic Farm.</p>
+                    <p className="text-slate-400">• [17:02] Order packaged at Bharath Foods Store.</p>
                     <p>• [17:21] Order dispatched from Vijayawada Hub. Delivery executive is in transit to: <strong>{orderData.delivery_address}</strong></p>
                   </>
                 )}

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useCart } from '../context/CartContext';
-import { ArrowLeft, CheckCircle2, CircleAlert, CreditCard, Sparkles } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, CircleAlert, CreditCard, Sparkles, MapPin, Truck, Clock } from 'lucide-react';
 
 export default function Checkout({ onBackToCatalog }) {
   const { cartItems, cartTotal, clearCart } = useCart();
@@ -12,6 +12,23 @@ export default function Checkout({ onBackToCatalog }) {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(null);
   const [orderConfirmation, setOrderConfirmation] = useState(null);
+
+  // Success screen tracking animation progress
+  const [trackProgress, setTrackProgress] = useState(0);
+
+  useEffect(() => {
+    let interval;
+    if (orderConfirmation && orderConfirmation.status === 'Shipped') {
+      interval = setInterval(() => {
+        setTrackProgress((prev) => (prev >= 100 ? 0 : prev + 1));
+      }, 350);
+    } else if (orderConfirmation && orderConfirmation.status === 'Delivered') {
+      setTrackProgress(100);
+    } else {
+      setTrackProgress(0);
+    }
+    return () => clearInterval(interval);
+  }, [orderConfirmation]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -94,6 +111,108 @@ export default function Checkout({ onBackToCatalog }) {
             <span className="text-sm text-slate-500 font-light">Amount Charged:</span>
             <span className="text-2xl font-black text-brand-700">₹{orderConfirmation.total_amount.toFixed(2)}</span>
           </div>
+        </div>
+
+        {/* Live Location Order Tracking Panel */}
+        <div className="glass border border-brand-200/60 rounded-3xl p-6 text-left space-y-5 bg-white shadow-md">
+          <div className="border-b border-brand-100 pb-3 flex justify-between items-center">
+            <h3 className="text-xs font-bold text-slate-800 uppercase tracking-wider">Live Delivery Tracking</h3>
+            <span className="text-[9px] font-bold text-brand-650 bg-brand-50 border border-brand-100 px-2 py-0.5 rounded-full uppercase">Real-Time</span>
+          </div>
+
+          {/* Timeline Milestones */}
+          <div className="grid grid-cols-4 gap-1 relative pt-2">
+            <div className="absolute top-4.5 left-1/8 right-1/8 h-0.5 bg-brand-100 -z-10 rounded-full">
+              <div 
+                className="h-full bg-brand-500 transition-all duration-500 rounded-full" 
+                style={{ 
+                  width: orderConfirmation.status === 'Pending' ? '0%' : 
+                         orderConfirmation.status === 'Processing' ? '33%' : 
+                         orderConfirmation.status === 'Shipped' ? '66%' : '100%' 
+                }}
+              />
+            </div>
+
+            {['Pending', 'Processing', 'Shipped', 'Delivered'].map((step, idx) => {
+              const statusMap = { 'Pending': 1, 'Processing': 2, 'Shipped': 3, 'Delivered': 4 };
+              const currentWeight = statusMap[orderConfirmation.status] || 1;
+              const isCompleted = currentWeight >= statusMap[step];
+              const labels = { 'Pending': 'Placed', 'Processing': 'Packed', 'Shipped': 'Transit', 'Delivered': 'Delivered' };
+
+              return (
+                <div key={step} className="flex flex-col items-center text-center space-y-1">
+                  <div className={`w-7 h-7 rounded-full border flex items-center justify-center font-bold text-[10px] transition-all ${
+                    isCompleted 
+                      ? 'bg-brand-500 border-brand-500 text-white' 
+                      : 'bg-white border-brand-200 text-slate-400'
+                  }`}>
+                    {idx + 1}
+                  </div>
+                  <span className={`text-[9px] font-bold uppercase tracking-wider ${
+                    isCompleted ? 'text-brand-700' : 'text-slate-400'
+                  }`}>
+                    {labels[step]}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Simulated Tracking Map */}
+          <div className="relative h-36 rounded-2xl border border-brand-200 bg-brand-50/50 overflow-hidden shadow-inner flex flex-col justify-between p-3.5">
+            <div className="absolute inset-0 opacity-10" style={{ 
+              backgroundImage: 'radial-gradient(circle, #7c3aed 1.5px, transparent 1.5px)', 
+              backgroundSize: '20px 20px' 
+            }} />
+
+            <div className="flex justify-between items-center relative z-10">
+              <div className="flex items-center gap-1 bg-white border border-brand-200/80 px-2 py-1 rounded-lg shadow-sm">
+                <MapPin className="w-3 h-3 text-brand-600" />
+                <span className="text-[9px] font-black text-slate-800 uppercase">Bharath Foods</span>
+              </div>
+              <div className="flex items-center gap-1 bg-white border border-brand-200/80 px-2 py-1 rounded-lg shadow-sm">
+                <MapPin className="w-3 h-3 text-red-500 animate-bounce" />
+                <span className="text-[9px] font-black text-slate-800 uppercase">Home</span>
+              </div>
+            </div>
+
+            {/* Path line & vehicle */}
+            <div className="relative h-8 w-full flex items-center justify-between border-t border-dashed border-brand-200">
+              {orderConfirmation.status === 'Shipped' && (
+                <div 
+                  className="absolute flex flex-col items-center -top-5 transition-all duration-300 ease-linear"
+                  style={{ left: `${trackProgress}%`, transform: 'translateX(-50%)' }}
+                >
+                  <div className="bg-brand-500 border border-brand-600 p-1 rounded-full shadow text-white animate-pulse">
+                    <Truck className="w-3.5 h-3.5" />
+                  </div>
+                </div>
+              )}
+              {orderConfirmation.status === 'Delivered' && (
+                <div className="absolute flex flex-col items-center -top-5 right-0 translate-x-1/2">
+                  <div className="bg-emerald-500 border border-emerald-600 p-1 rounded-full shadow text-white">
+                    <CheckCircle2 className="w-3.5 h-3.5" />
+                  </div>
+                </div>
+              )}
+              {orderConfirmation.status !== 'Shipped' && orderConfirmation.status !== 'Delivered' && (
+                <div className="w-full text-center text-[10px] text-slate-500 font-light flex items-center justify-center gap-1">
+                  <Clock className="w-3 h-3 text-brand-500" />
+                  Delivery tracking will activate when admin ships the order.
+                </div>
+              )}
+            </div>
+
+            <div className="flex justify-between text-[8px] text-slate-500 font-bold uppercase tracking-wider relative z-10 pt-1 border-t border-brand-100">
+              <span>Speed: {orderConfirmation.status === 'Shipped' ? '45 km/h' : '0 km/h'}</span>
+              <span>Lat: {orderConfirmation.status === 'Shipped' ? (16.5062 + (trackProgress * 0.001)).toFixed(4) : '16.5062'} | Lng: {orderConfirmation.status === 'Shipped' ? (80.6480 + (trackProgress * 0.001)).toFixed(4) : '80.6480'}</span>
+            </div>
+          </div>
+
+          {/* Quick Notice */}
+          <p className="text-[10px] text-slate-500 text-center leading-relaxed">
+            Keep this screen open to watch live location updates, or copy your Order ID <strong className="text-brand-700 font-black bg-brand-50 px-1 py-0.5 rounded border border-brand-100">#{orderConfirmation.id}</strong> to track it later using the <strong>Track Order</strong> button at the top!
+          </p>
         </div>
 
         <button
@@ -197,7 +316,7 @@ export default function Checkout({ onBackToCatalog }) {
                   <h4 className="text-xs font-bold text-brand-700 uppercase tracking-wider">Bank Account Details</h4>
                   <div className="space-y-0.5 text-xs text-slate-700">
                     <p>Bank: <strong className="text-slate-900 font-bold">State Bank of India (SBI)</strong></p>
-                    <p>Name: <strong className="text-slate-900 font-bold">BHARATH ORGANIC</strong></p>
+                    <p>Name: <strong className="text-slate-900 font-bold">BHARATH FOODS</strong></p>
                     <p>Account: <strong className="text-slate-900 font-bold">9347758048</strong></p>
                     <p>IFSC Code: <strong className="text-slate-900 font-bold">SBIN0001234</strong></p>
                   </div>

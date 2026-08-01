@@ -269,7 +269,7 @@ export default function AdminDashboard({ onBack }) {
           >
             <ArrowLeft className="w-3.5 h-3.5" /> Back to Shop
           </button>
-          <h1 className="text-3xl font-black text-slate-800 tracking-tight">Bharath Organic Admin Center</h1>
+          <h1 className="text-3xl font-black text-slate-800 tracking-tight">Bharath Foods Admin Center</h1>
           
           {/* Navigation Tabs */}
           <div className="flex items-center gap-3.5 pt-4 text-sm">

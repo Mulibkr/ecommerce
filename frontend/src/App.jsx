@@ -149,7 +149,7 @@ export default function App() {
               <div className="bg-brand-50 border border-brand-100 p-2 rounded-lg">
                 <Sparkles className="w-4 h-4 text-brand-600" />
               </div>
-              <span className="font-extrabold tracking-wider text-brand-700">BHARATH ORGANIC</span>
+              <span className="font-extrabold tracking-wider text-brand-700">BHARATH FOODS</span>
             </div>
             <div className="flex items-center gap-6">
               <button 
@@ -159,7 +159,7 @@ export default function App() {
                 Orders Dashboard
               </button>
               <p className="text-xs text-slate-500 font-light flex items-center gap-1">
-                Made with <Heart className="w-3.5 h-3.5 text-red-500 fill-current" /> by Bharath Lab. &copy; {new Date().getFullYear()} BHARATH ORGANIC.
+                Made with <Heart className="w-3.5 h-3.5 text-red-500 fill-current" /> by Bharath Lab. &copy; {new Date().getFullYear()} BHARATH FOODS.
               </p>
             </div>
           </div>
