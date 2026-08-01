@@ -188,36 +188,6 @@ def seed_db(clear=True):
                 stock=45,
                 is_trending=True
             ),
-
-            # Sweets (3 items)
-            models.Product(
-                name="Sweet Madatha Kaja (250g)",
-                description="Traditional Andhra sweet made from layered wheat flour dough, deep-fried to a crisp golden brown, and soaked in cardamom-flavored sugar syrup.",
-                price=189.00,
-                image_url="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?q=80&w=600&auto=format&fit=crop",
-                category="Sweets",
-                stock=30,
-                is_trending=False
-            ),
-            models.Product(
-                name="Traditional Milk Kova (250g)",
-                description="Authentic, rich milk kova prepared by slow-reducing organic whole milk until thick and sweetened. Soft, grainy, and full of natural dairy flavor.",
-                price=199.00,
-                image_url="https://images.unsplash.com/photo-1601050690597-df056fb4ce78?q=80&w=600&auto=format&fit=crop",
-                category="Sweets",
-                stock=35,
-                is_trending=True
-            ),
-            models.Product(
-                name="Juicy Gulab Jamun (8pcs)",
-                description="Soft, spongy milk-solid dumplings fried to a golden brown and soaked in hot rosewater and saffron cardamom sugar syrup. A classic treat.",
-                price=149.00,
-                image_url="https://images.unsplash.com/photo-1626132647523-66f5bf380027?q=80&w=600&auto=format&fit=crop",
-                category="Sweets",
-                stock=25,
-                is_trending=True
-            ),
-
             # Snacks (2 items)
             models.Product(
                 name="Baked Organic Banana Chips (200g)",

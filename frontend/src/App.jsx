@@ -69,7 +69,7 @@ export default function App() {
 
   return (
     <CartProvider>
-      <div className="flex flex-col min-h-screen bg-brand-50">
+      <div className="flex flex-col min-h-screen bg-transparent">
         {/* Navigation Bar */}
         <Navbar
           onOpenCart={handleOpenCart}
