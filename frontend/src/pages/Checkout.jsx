@@ -160,12 +160,15 @@ export default function Checkout({ onBackToCatalog }) {
               />
             </div>
 
-            <div className="space-y-2 border-t border-brand-200/60 pt-6">
-              <div className="flex items-center gap-2 text-xs font-bold text-slate-550 uppercase tracking-wider pb-2">
-                <CreditCard className="w-4 h-4 text-brand-500" /> Payment Details (Simulated)
+            <div className="space-y-2.5 border-t border-brand-200/60 pt-6">
+              <div className="flex items-center gap-2 text-xs font-bold text-slate-550 uppercase tracking-wider pb-1">
+                <CreditCard className="w-4 h-4 text-brand-600" /> PhonePe UPI Payment
               </div>
+              <p className="text-sm font-semibold text-slate-800">
+                Please pay via PhonePe to: <span className="text-brand-700 font-extrabold text-base bg-brand-100/60 px-2 py-0.5 rounded-lg border border-brand-200">9347758048</span>
+              </p>
               <p className="text-xs text-slate-500 font-light leading-relaxed">
-                This is a mock transaction. No real credit card or bank details are required. Payment will be automatically cleared on submit.
+                Once the payment of ₹{cartTotal.toFixed(2)} is made, click the button below to submit your details and place your order.
               </p>
             </div>
 

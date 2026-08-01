@@ -7,6 +7,26 @@ export default function AdminDashboard({ onBack }) {
   const [error, setError] = useState('');
   const [selectedOrder, setSelectedOrder] = useState(null);
 
+  // Admin Authentication State
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    sessionStorage.getItem('isAdminLoggedIn') === 'true'
+  );
+  const [loginError, setLoginError] = useState('');
+
+  const handleLoginSubmit = (e) => {
+    e.preventDefault();
+    // Default credentials as requested: admin / 9347758048
+    if (username.trim() === 'admin' && password === '9347758048') {
+      setIsLoggedIn(true);
+      sessionStorage.setItem('isAdminLoggedIn', 'true');
+      setLoginError('');
+    } else {
+      setLoginError('Invalid username or password.');
+    }
+  };
+
   const fetchOrders = () => {
     setLoading(true);
     fetch('/api/orders')
@@ -59,6 +79,73 @@ export default function AdminDashboard({ onBack }) {
         return status;
     }
   };
+
+  if (!isLoggedIn) {
+    return (
+      <div className="max-w-md mx-auto py-16 px-4 space-y-8 animate-fade-in">
+        <div className="text-center space-y-3">
+          <button 
+            onClick={onBack}
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-700 uppercase tracking-wider hover:text-brand-800 transition-colors"
+          >
+            <ArrowLeft className="w-3.5 h-3.5" /> Back to Shop
+          </button>
+          <div className="flex justify-center pt-4">
+            <img
+              src="/assets/owner_logo.jpg"
+              alt="Bharath Organic Logo"
+              className="w-20 h-20 rounded-full object-cover border-2 border-brand-500 shadow-md"
+            />
+          </div>
+          <h1 className="text-2xl font-black text-slate-800 tracking-tight">Admin Dashboard Login</h1>
+          <p className="text-slate-500 text-xs font-light">
+            Enter admin details to manage Bharath Organic orders.
+          </p>
+        </div>
+
+        <div className="glass-card rounded-2xl p-6 sm:p-8 space-y-6 bg-white shadow-md">
+          {loginError && (
+            <div className="p-3.5 rounded-xl bg-red-50 border border-red-200 text-red-650 text-xs">
+              {loginError}
+            </div>
+          )}
+
+          <form onSubmit={handleLoginSubmit} className="space-y-4">
+            <div className="space-y-1.5">
+              <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Username</label>
+              <input
+                type="text"
+                required
+                placeholder="admin"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                className="input-field"
+              />
+            </div>
+
+            <div className="space-y-1.5">
+              <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Password</label>
+              <input
+                type="password"
+                required
+                placeholder="Enter password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="input-field"
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="w-full py-3 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-bold text-xs tracking-wider uppercase transition-all shadow-sm active:scale-98"
+            >
+              Sign In
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-8 pb-16">
