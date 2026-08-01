@@ -67,29 +67,29 @@ export default function Checkout({ onBackToCatalog }) {
   if (orderConfirmation) {
     return (
       <div className="max-w-xl mx-auto py-16 px-4 text-center space-y-8 animate-fade-in">
-        <div className="inline-flex items-center justify-center p-4 bg-emerald-950/60 border border-emerald-800 rounded-full text-emerald-400 mb-2">
+        <div className="inline-flex items-center justify-center p-4 bg-emerald-50 border border-emerald-250 rounded-full text-emerald-600 mb-2">
           <CheckCircle2 className="w-12 h-12" />
         </div>
         <div className="space-y-3">
-          <h1 className="text-3xl font-black text-white tracking-tight">Order Placed Successfully!</h1>
-          <p className="text-slate-400 font-light text-sm max-w-sm mx-auto leading-relaxed">
+          <h1 className="text-3xl font-black text-slate-800 tracking-tight">Order Placed Successfully!</h1>
+          <p className="text-slate-555 font-light text-sm max-w-sm mx-auto leading-relaxed">
             Thank you for shopping with Bharath. Your order has been registered and is now being processed.
           </p>
         </div>
 
-        <div className="glass border border-brand-800 rounded-2xl p-6 text-left space-y-4">
-          <div className="flex justify-between text-xs text-slate-500 font-medium uppercase tracking-wider pb-3 border-b border-brand-800/80">
+        <div className="glass border border-brand-200/60 rounded-2xl p-6 text-left space-y-4 bg-white shadow-sm">
+          <div className="flex justify-between text-xs text-slate-500 font-bold uppercase tracking-wider pb-3 border-b border-brand-200/60">
             <span>Order Receipt</span>
-            <span>ID: #{orderConfirmation.id}</span>
+            <span className="text-brand-700">ID: #{orderConfirmation.id}</span>
           </div>
           <div className="space-y-1.5 text-sm">
-            <p className="flex justify-between text-slate-400"><span className="font-light">Customer:</span> <strong className="text-white font-semibold">{orderConfirmation.customer_name}</strong></p>
-            <p className="flex justify-between text-slate-400"><span className="font-light">Email:</span> <strong className="text-white font-semibold">{orderConfirmation.customer_email}</strong></p>
-            <p className="flex justify-between text-slate-400"><span className="font-light">Status:</span> <strong className="text-brand-300 font-semibold">{orderConfirmation.status}</strong></p>
+            <p className="flex justify-between text-slate-500"><span className="font-light">Customer:</span> <strong className="text-slate-805 font-bold">{orderConfirmation.customer_name}</strong></p>
+            <p className="flex justify-between text-slate-500"><span className="font-light">Email:</span> <strong className="text-slate-805 font-bold">{orderConfirmation.customer_email}</strong></p>
+            <p className="flex justify-between text-slate-500"><span className="font-light">Status:</span> <strong className="text-brand-700 font-bold">{orderConfirmation.status}</strong></p>
           </div>
-          <div className="pt-3 border-t border-brand-800/80 flex justify-between items-baseline">
-            <span className="text-sm text-slate-400 font-light">Amount Charged:</span>
-            <span className="text-2xl font-black text-white">₹{orderConfirmation.total_amount.toFixed(2)}</span>
+          <div className="pt-3 border-t border-brand-200/60 flex justify-between items-baseline">
+            <span className="text-sm text-slate-500 font-light">Amount Charged:</span>
+            <span className="text-2xl font-black text-brand-700">₹{orderConfirmation.total_amount.toFixed(2)}</span>
           </div>
         </div>
 
