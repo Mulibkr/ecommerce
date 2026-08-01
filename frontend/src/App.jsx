@@ -5,11 +5,13 @@ import Home from './pages/Home';
 import ProductDetail from './pages/ProductDetail';
 import Checkout from './pages/Checkout';
 import AdminDashboard from './pages/AdminDashboard';
+import TrackOrderModal from './components/TrackOrderModal';
 import { CartProvider } from './context/CartContext';
 import { Sparkles, Heart } from 'lucide-react';
 
 export default function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isTrackOpen, setIsTrackOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState('home'); // 'home', 'detail', 'checkout'
   const [selectedProductId, setSelectedProductId] = useState(null);
   
@@ -73,6 +75,7 @@ export default function App() {
         {/* Navigation Bar */}
         <Navbar
           onOpenCart={handleOpenCart}
+          onOpenTrack={() => setIsTrackOpen(true)}
           onSearch={setSearchQuery}
           searchQuery={searchQuery}
           activeCategory={activeCategory}
@@ -88,6 +91,12 @@ export default function App() {
           isOpen={isCartOpen}
           onClose={handleCloseCart}
           onCheckout={handleCheckoutRedirect}
+        />
+
+        {/* Live Location Order Tracking Modal */}
+        <TrackOrderModal
+          isOpen={isTrackOpen}
+          onClose={() => setIsTrackOpen(false)}
         />
 
         {/* Main Content Area */}

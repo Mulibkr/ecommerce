@@ -2,7 +2,7 @@ import React from 'react';
 import { useCart } from '../context/CartContext';
 import { ShoppingBag, Search, Sparkles } from 'lucide-react';
 
-export default function Navbar({ onOpenCart, onSearch, searchQuery, activeCategory, onSelectCategory, categories }) {
+export default function Navbar({ onOpenCart, onOpenTrack, onSearch, searchQuery, activeCategory, onSelectCategory, categories }) {
   const { cartCount } = useCart();
 
   return (
@@ -65,6 +65,14 @@ export default function Navbar({ onOpenCart, onSearch, searchQuery, activeCatego
                 </button>
               ))}
             </div>
+
+            {/* Track Order Trigger */}
+            <button
+              onClick={onOpenTrack}
+              className="px-3.5 py-2.5 rounded-xl border border-brand-200 bg-white hover:bg-brand-50 text-brand-700 text-xs font-bold uppercase tracking-wider shadow-sm transition-all active:scale-95"
+            >
+              Track Order
+            </button>
 
             {/* Cart Trigger */}
             <button
