@@ -14,24 +14,6 @@ def seed_db(clear=True):
         products = [
             # Groceries / Organic Food (6 items)
             models.Product(
-                name="Organic Yellow Moong Dal (1kg)",
-                description="Organic split yellow moong dal, high in protein and easy to digest. Sourced from certified chemical-free farms.",
-                price=199.00,
-                image_url="https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?q=80&w=600&auto=format&fit=crop",
-                category="Organic Food",
-                stock=50,
-                is_trending=True
-            ),
-            models.Product(
-                name="Malabar Artisanal Filter Coffee",
-                description="Premium blend of fresh chicory and Arabica beans, roasted to perfection to deliver the authentic, rich aroma of South Indian filter coffee.",
-                price=449.00,
-                image_url="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=600&auto=format&fit=crop",
-                category="Organic Food",
-                stock=60,
-                is_trending=False
-            ),
-            models.Product(
                 name="Premium Basmati Rice (5kg)",
                 description="Long-grain, aromatic aged basmati rice grown organically in the foothills of the Himalayas. Perfect for biryanis and everyday meals.",
                 price=699.00,
@@ -150,15 +132,6 @@ def seed_db(clear=True):
                 image_url="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?q=80&w=600&auto=format&fit=crop",
                 category="Fruits",
                 stock=35,
-                is_trending=False
-            ),
-            models.Product(
-                name="Fresh Sweet Pomegranates (2pcs)",
-                description="Plump pomegranates filled with deep red, juicy, and sweet arils. Handpicked for quality.",
-                price=149.00,
-                image_url="https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?q=80&w=600&auto=format&fit=crop",
-                category="Fruits",
-                stock=25,
                 is_trending=False
             ),
             models.Product(
