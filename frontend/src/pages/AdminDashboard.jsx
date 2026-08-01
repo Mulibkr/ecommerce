@@ -244,9 +244,20 @@ export default function AdminDashboard({ onBack }) {
                 {/* Customer Information */}
                 <div className="space-y-2.5">
                   <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider">Customer Info</h4>
-                  <div className="p-4 rounded-xl bg-brand-50/50 border border-brand-100 space-y-1">
-                    <p className="text-sm font-bold text-slate-800">{selectedOrder.customer_name}</p>
-                    <p className="text-xs text-slate-650">{selectedOrder.customer_email}</p>
+                  <div className="p-4 rounded-xl bg-brand-50/50 border border-brand-100 space-y-2.5">
+                    <div>
+                      <span className="text-[9px] font-bold text-slate-400 uppercase block">Name & Email</span>
+                      <p className="text-sm font-bold text-slate-800">{selectedOrder.customer_name}</p>
+                      <p className="text-xs text-slate-600">{selectedOrder.customer_email}</p>
+                    </div>
+                    {selectedOrder.delivery_address && (
+                      <div className="pt-2 border-t border-brand-200/50">
+                        <span className="text-[9px] font-bold text-slate-400 uppercase block">Delivery Address</span>
+                        <p className="text-xs text-slate-750 font-semibold whitespace-pre-wrap leading-relaxed">
+                          {selectedOrder.delivery_address}
+                        </p>
+                      </div>
+                    )}
                   </div>
                 </div>
 

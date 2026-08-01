@@ -40,12 +40,14 @@ class OrderItemResponse(OrderItemBase):
 class OrderCreate(BaseModel):
     customer_name: str
     customer_email: EmailStr
+    delivery_address: str
     items: List[OrderItemCreate]
 
 class OrderResponse(BaseModel):
     id: int
     customer_name: str
     customer_email: str
+    delivery_address: Optional[str] = None
     total_amount: float
     status: str
     created_at: datetime

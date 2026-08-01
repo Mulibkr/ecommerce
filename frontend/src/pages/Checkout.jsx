@@ -7,6 +7,7 @@ export default function Checkout({ onBackToCatalog }) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    delivery_address: '',
   });
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(null);
@@ -19,8 +20,8 @@ export default function Checkout({ onBackToCatalog }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!formData.name || !formData.email) {
-      setError("Please fill in all customer details.");
+    if (!formData.name || !formData.email || !formData.delivery_address) {
+      setError("Please fill in all customer details and delivery address.");
       return;
     }
     if (cartItems.length === 0) {
@@ -34,6 +35,7 @@ export default function Checkout({ onBackToCatalog }) {
     const payload = {
       customer_name: formData.name,
       customer_email: formData.email,
+      delivery_address: formData.delivery_address,
       items: cartItems.map((item) => ({
         product_id: item.id,
         quantity: item.quantity,
@@ -85,6 +87,7 @@ export default function Checkout({ onBackToCatalog }) {
           <div className="space-y-1.5 text-sm">
             <p className="flex justify-between text-slate-500"><span className="font-light">Customer:</span> <strong className="text-slate-805 font-bold">{orderConfirmation.customer_name}</strong></p>
             <p className="flex justify-between text-slate-500"><span className="font-light">Email:</span> <strong className="text-slate-805 font-bold">{orderConfirmation.customer_email}</strong></p>
+            <p className="flex justify-between text-slate-500"><span className="font-light">Delivery Address:</span> <strong className="text-slate-805 font-bold ml-4 text-right line-clamp-2 max-w-[240px]">{orderConfirmation.delivery_address}</strong></p>
             <p className="flex justify-between text-slate-500"><span className="font-light">Status:</span> <strong className="text-brand-700 font-bold">{orderConfirmation.status}</strong></p>
           </div>
           <div className="pt-3 border-t border-brand-200/60 flex justify-between items-baseline">
@@ -147,7 +150,7 @@ export default function Checkout({ onBackToCatalog }) {
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="email" className="text-xs font-bold text-slate-500 uppercase tracking-wider block">Email Address</label>
+              <label htmlFor="email" className="text-xs font-bold text-slate-550 uppercase tracking-wider block">Email Address</label>
               <input
                 id="email"
                 name="email"
@@ -160,15 +163,49 @@ export default function Checkout({ onBackToCatalog }) {
               />
             </div>
 
-            <div className="space-y-2.5 border-t border-brand-200/60 pt-6">
-              <div className="flex items-center gap-2 text-xs font-bold text-slate-550 uppercase tracking-wider pb-1">
-                <CreditCard className="w-4 h-4 text-brand-600" /> PhonePe UPI Payment
+            <div className="space-y-2">
+              <label htmlFor="delivery_address" className="text-xs font-bold text-slate-550 uppercase tracking-wider block">Delivery Address</label>
+              <textarea
+                id="delivery_address"
+                name="delivery_address"
+                rows="3"
+                placeholder="Enter complete house address, area, pincode and landmarks..."
+                required
+                value={formData.delivery_address}
+                onChange={handleInputChange}
+                className="input-field py-2.5"
+              />
+            </div>
+
+            <div className="space-y-4 border-t border-brand-200/60 pt-6">
+              <div className="flex items-center gap-2 text-xs font-bold text-slate-650 uppercase tracking-wider pb-1">
+                <CreditCard className="w-4 h-4 text-brand-600" /> Payment Details & Instructions
               </div>
-              <p className="text-sm font-semibold text-slate-800">
-                Please pay via PhonePe to: <span className="text-brand-700 font-extrabold text-base bg-brand-100/60 px-2 py-0.5 rounded-lg border border-brand-200">9347758048</span>
-              </p>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* UPI Option */}
+                <div className="p-4 rounded-xl bg-brand-50/50 border border-brand-200/80 space-y-2">
+                  <h4 className="text-xs font-bold text-brand-700 uppercase tracking-wider">UPI / PhonePe Details</h4>
+                  <div className="space-y-1">
+                    <p className="text-sm text-slate-700 font-medium">PhonePe: <strong className="text-slate-900 font-black">9347758048</strong></p>
+                    <p className="text-sm text-slate-700 font-medium">UPI ID: <strong className="text-slate-900 font-black">9347758048@ybl</strong></p>
+                  </div>
+                </div>
+
+                {/* Bank Account Option */}
+                <div className="p-4 rounded-xl bg-brand-50/50 border border-brand-200/80 space-y-2">
+                  <h4 className="text-xs font-bold text-brand-700 uppercase tracking-wider">Bank Account Details</h4>
+                  <div className="space-y-0.5 text-xs text-slate-700">
+                    <p>Bank: <strong className="text-slate-900 font-bold">State Bank of India (SBI)</strong></p>
+                    <p>Name: <strong className="text-slate-900 font-bold">BHARATH ORGANIC</strong></p>
+                    <p>Account: <strong className="text-slate-900 font-bold">9347758048</strong></p>
+                    <p>IFSC Code: <strong className="text-slate-900 font-bold">SBIN0001234</strong></p>
+                  </div>
+                </div>
+              </div>
+
               <p className="text-xs text-slate-500 font-light leading-relaxed">
-                Once the payment of ₹{cartTotal.toFixed(2)} is made, click the button below to submit your details and place your order.
+                Please transfer exactly <strong className="text-brand-700 font-bold">₹{cartTotal.toFixed(2)}</strong> to either the UPI ID or the Bank Account, then click the button below to place your order.
               </p>
             </div>
 

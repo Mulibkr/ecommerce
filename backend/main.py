@@ -118,6 +118,7 @@ def create_order(order_in: schemas.OrderCreate, db: Session = Depends(get_db)):
     db_order = models.Order(
         customer_name=order_in.customer_name,
         customer_email=str(order_in.customer_email),
+        delivery_address=order_in.delivery_address,
         total_amount=round(total_amount, 2),
         items=db_items
     )

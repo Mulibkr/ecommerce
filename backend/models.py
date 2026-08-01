@@ -25,6 +25,7 @@ class Order(Base):
     id = Column(Integer, primary_key=True, index=True)
     customer_name = Column(String, nullable=False)
     customer_email = Column(String, nullable=False)
+    delivery_address = Column(String, nullable=True)
     total_amount = Column(Float, nullable=False)
     status = Column(String, default="Pending") # Pending, Processing, Shipped, Delivered
     created_at = Column(DateTime, default=datetime.utcnow)
