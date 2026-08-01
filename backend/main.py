@@ -79,6 +79,65 @@ def get_categories(db: Session = Depends(get_db)):
     categories = db.query(models.Product.category).distinct().all()
     return [c[0] for c in categories if c[0]]
 
+
+@app.post("/api/products", response_model=schemas.Product, status_code=201)
+def create_product(product_in: schemas.ProductCreate, db: Session = Depends(get_db)):
+    db_product = models.Product(
+        name=product_in.name,
+        description=product_in.description,
+        price=product_in.price,
+        image_url=product_in.image_url,
+        category=product_in.category,
+        stock=product_in.stock,
+        is_trending=product_in.is_trending
+    )
+    try:
+        db.add(db_product)
+        db.commit()
+        db.refresh(db_product)
+        return db_product
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(status_code=500, detail=f"Failed to create product: {str(e)}")
+
+
+@app.put("/api/products/{product_id}", response_model=schemas.Product)
+def update_product(product_id: int, product_in: schemas.ProductCreate, db: Session = Depends(get_db)):
+    product = db.query(models.Product).filter(models.Product.id == product_id).first()
+    if not product:
+        raise HTTPException(status_code=404, detail="Product not found")
+        
+    product.name = product_in.name
+    product.description = product_in.description
+    product.price = product_in.price
+    product.image_url = product_in.image_url
+    product.category = product_in.category
+    product.stock = product_in.stock
+    product.is_trending = product_in.is_trending
+    
+    try:
+        db.commit()
+        db.refresh(product)
+        return product
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(status_code=500, detail=f"Failed to update product: {str(e)}")
+
+
+@app.delete("/api/products/{product_id}")
+def delete_product(product_id: int, db: Session = Depends(get_db)):
+    product = db.query(models.Product).filter(models.Product.id == product_id).first()
+    if not product:
+        raise HTTPException(status_code=404, detail="Product not found")
+        
+    try:
+        db.delete(product)
+        db.commit()
+        return {"message": f"Product with ID {product_id} deleted successfully"}
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(status_code=500, detail=f"Failed to delete product: {str(e)}")
+
 # --- Orders Endpoints ---
 
 @app.post("/api/orders", response_model=schemas.OrderResponse, status_code=201)
